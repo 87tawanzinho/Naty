@@ -75,14 +75,7 @@
     }
 
     .filtering {
-        background: black;
-        padding: 2500px;
-    }
-
-    .img-logo {
-        width: '150px';
-        height: 'auto';
-        objectfit: 'cover';
+        filter: invert(75%);
     }
 
     .card {
@@ -114,6 +107,7 @@
     background: #111f3d;
 }
 .navbar.active {
+    transition: 0.4s ease-in-out;
     background: #fff;
 
     width: 100%;
