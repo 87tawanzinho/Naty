@@ -1,15 +1,19 @@
 import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import SecondNav from './components/SecondNav';
+
 import ThirdNav from './components/ThirdNav';
 import ForNav from './components/ForNav';
+
+import WhatsappTsx from './components/Whatsapp';
 const Header = dynamic(() => import('./components/Header'));
 
 export default function Home() {
     return (
         <Box>
+            <WhatsappTsx />
             <Box sx={{ position: 'relative' }}>
                 <Header />
             </Box>

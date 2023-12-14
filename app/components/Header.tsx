@@ -2,6 +2,7 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/AccountCircle';
 import { useEffect, useState } from 'react';
+
 export default function Header() {
     const [navbar, setNavBar] = useState(false);
 
