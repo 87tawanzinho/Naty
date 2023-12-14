@@ -99,11 +99,7 @@ export default function Header() {
                                 borderRadius: '12px',
                                 backgroundColor: '#18BD95',
                                 width: '140px',
-                                whiteSpace: 'nowrap',
-
-                                '&:hover': {
-                                    backgroundColor: '#45a049' // Cor diferente no hover
-                                }
+                                whiteSpace: 'nowrap'
                             }}
                         >
                             Teste Grátis
