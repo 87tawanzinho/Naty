@@ -71,7 +71,10 @@ export default function ForNav() {
                         color: 'white',
                         whiteSpace: 'nowrap',
                         width: '200px',
-                        borderRadius: ' 50px'
+                        borderRadius: ' 50px',
+                        ':hover': {
+                            backgroundColor: '#111f3d'
+                        }
                     }}
                 >
                     Experimente Grátis

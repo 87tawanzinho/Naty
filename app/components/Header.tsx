@@ -93,26 +93,32 @@ export default function Header() {
                         }}
                     >
                         <Button
-                            className="buttonHoverBlue"
-                            variant="contained"
-                            style={{
+                            sx={{
                                 borderRadius: '12px',
+                                color: 'white',
                                 backgroundColor: '#18BD95',
-                                width: '140px',
-                                whiteSpace: 'nowrap'
+                                width: '150px',
+                                fontStyle: 'initial',
+                                whiteSpace: 'nowrap',
+                                ':hover': {
+                                    backgroundColor: '#111f3d'
+                                }
                             }}
                         >
                             Teste Grátis
                         </Button>
                         <Button
                             className="buttonHoverBlue"
-                            variant="outlined"
-                            style={{
-                                borderRadius: '12px',
+                            sx={{
+                                borderRadius: '20px',
                                 border: '2px solid white',
                                 color: 'white',
-                                width: '140px',
-                                whiteSpace: 'nowrap'
+                                width: '150px',
+                                fontStyle: 'initial',
+                                whiteSpace: 'nowrap',
+                                ':hover': {
+                                    backgroundColor: '#111f3d'
+                                }
                             }}
                         >
                             Login
@@ -146,13 +152,17 @@ export default function Header() {
                             passo?
                         </Typography>
                         <Button
+                            className="buttonHoverBlue"
                             sx={{
                                 background: '#18BD95',
                                 width: '160px',
                                 textTransform: 'initial',
                                 whiteSpace: 'nowrap',
                                 color: '#fff',
-                                borderRadius: '30px'
+                                borderRadius: '30px',
+                                ':hover': {
+                                    backgroundColor: '#111f3d'
+                                }
                             }}
                         >
                             Experimente Grátis {'>'}

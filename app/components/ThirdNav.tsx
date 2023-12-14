@@ -37,7 +37,10 @@ export default function ThirdNav() {
                         color: 'white',
                         whiteSpace: 'nowrap',
                         width: '180px',
-                        borderRadius: '20px'
+                        borderRadius: '20px',
+                        ':hover': {
+                            backgroundColor: '#111f3d'
+                        }
                     }}
                 >
                     Experimente Grátis
