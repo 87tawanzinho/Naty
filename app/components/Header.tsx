@@ -7,10 +7,16 @@ export default function Header() {
                 background:
                     'linear-gradient(to right top, #8060f6, #7f53f4, #8044f2, #8131ef, #8312eb)',
                 height: 'auto',
-                width: '100vw',
+                width: '100%',
+
                 paddingTop: '20px',
-                paddingLeft: { xs: 'none', md: '400px' },
-                paddingRight: { xs: 'none', md: '400px' },
+                paddingLeft: { xs: 'none', sm: '1x', xl: '400px' },
+                paddingRight: {
+                    xs: 'none',
+                    sm: '1px',
+
+                    xl: '400px'
+                },
 
                 paddingBottom: '80px'
             }}
@@ -18,24 +24,31 @@ export default function Header() {
             <Box>
                 <Box
                     display="flex"
+                    position={'fixed'}
+                    gap={'2rem'}
+                    top={'0'}
+                    marginTop={'20px'}
                     justifyContent="space-around"
                     alignItems="center"
+                    className="photoIcon"
                 >
                     <Box display="flex" alignItems="center">
-                        <img
-                            src="https://secretarianaty.com/wp-content/uploads/2023/07/logo-branca-novo.png.webp"
-                            alt=""
-                            style={{
-                                width: '150px',
-                                height: 'auto',
-                                objectFit: 'cover'
-                            }}
-                        />
+                        <Box>
+                            <img
+                                src="https://secretarianaty.com/wp-content/uploads/2023/07/logo-branca-novo.png.webp"
+                                alt=""
+                                style={{
+                                    width: '150px',
+                                    height: 'auto',
+                                    objectFit: 'cover'
+                                }}
+                            />
+                        </Box>
 
                         <PersonIcon
                             color="secondary"
                             sx={{
-                                position: 'absolute',
+                                position: 'fixed',
                                 right: 20,
                                 display: { md: 'none', xs: 'default' }
                             }}
@@ -46,7 +59,13 @@ export default function Header() {
                         direction="row"
                         spacing={4}
                         color="#fff"
-                        sx={{ display: { xs: 'none', md: 'flex' } }}
+                        sx={{
+                            display: {
+                                xs: 'none',
+                                md: 'flex',
+                                whiteSpace: 'nowrap'
+                            }
+                        }}
                     >
                         <Typography variant="body1" className="animatingMenu">
                             Início
@@ -69,9 +88,12 @@ export default function Header() {
                         direction="row"
                         spacing={2}
                         borderRadius="10px"
-                        sx={{ display: { xs: 'none', md: 'flex' } }}
+                        sx={{
+                            display: { xs: 'none', md: 'flex' }
+                        }}
                     >
                         <Button
+                            className="buttonHoverBlue"
                             variant="contained"
                             style={{
                                 borderRadius: '12px',
@@ -87,6 +109,7 @@ export default function Header() {
                             Teste Grátis
                         </Button>
                         <Button
+                            className="buttonHoverBlue"
                             variant="outlined"
                             style={{
                                 borderRadius: '12px',
@@ -109,9 +132,10 @@ export default function Header() {
                             xs: '4rem',
                             md: 'none'
                         },
-                        marginLeft: { xs: 'none', md: '100px' },
-                        marginRight: { xs: 'none', md: '100px' },
-                        marginTop: '80px'
+                        marginLeft: { xs: 'none', lg: '100px' },
+                        marginRight: { xs: 'none', lg: '100px' },
+                        marginTop: '80px',
+                        padding: '20px'
                     }}
                     justifyContent={'space-between'}
                     padding="20px"
