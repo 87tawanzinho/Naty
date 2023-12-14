@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import React, { lazy, Suspense } from 'react';
 import SecondNav from './components/SecondNav';
 import ThirdNav from './components/ThirdNav';
+import ForNav from './components/ForNav';
 const Header = dynamic(() => import('./components/Header'));
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
                 <SecondNav />
             </Box>
             <ThirdNav />
+            <ForNav />
         </Box>
     );
 }
