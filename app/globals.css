@@ -53,6 +53,10 @@
     height: 350px;
     border-radius: 5%;
 }
+
+.scroll-div {
+    width: 100%;
+}
 .photoIcon {
 }
 .photo {
@@ -70,11 +74,26 @@
         right: 0;
     }
 
+    .filtering {
+        background: black;
+        padding: 2500px;
+    }
+
+    .img-logo {
+        width: '150px';
+        height: 'auto';
+        objectfit: 'cover';
+    }
+
     .card {
         display: flex;
         flex-direction: column;
         padding: 5px;
         width: 90%;
+    }
+
+    .navbar.active {
+        display: none;
     }
 }
 
@@ -85,4 +104,25 @@
 .buttonHoverBlue:hover {
     background: #111f3d;
     transition: 0.4s ease-in-out;
+}
+
+.color-font {
+    color: #6243e9;
+}
+
+.bg-buttonWhite {
+    background: #111f3d;
+}
+.navbar.active {
+    background: #fff;
+
+    width: 100%;
+    justify-content: center;
+    gap: 4rem;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
 }

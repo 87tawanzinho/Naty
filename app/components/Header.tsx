@@ -1,6 +1,28 @@
+'use client';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/AccountCircle';
+import { useEffect, useState } from 'react';
 export default function Header() {
+    const [navbar, setNavBar] = useState(false);
+
+    const changeBackground = () => {
+        if (typeof window !== 'undefined') {
+            if (window.scrollY >= 80) {
+                setNavBar(true);
+            } else {
+                setNavBar(false);
+            }
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', changeBackground);
+
+        return () => {
+            window.removeEventListener('scroll', changeBackground);
+        };
+    }, []);
+
     return (
         <Box
             sx={{
@@ -27,20 +49,26 @@ export default function Header() {
                     position={'fixed'}
                     gap={'2rem'}
                     top={'0'}
-                    marginTop={'20px'}
+                    paddingTop={2}
+                    paddingBottom={'1rem'}
                     justifyContent="space-around"
+                    alignContent={'center'}
                     alignItems="center"
-                    className="photoIcon"
+                    className={`photoIcon ${
+                        navbar ? 'navbar active' : 'navbar'
+                    }`}
                 >
                     <Box display="flex" alignItems="center">
                         <Box>
                             <img
                                 src="https://secretarianaty.com/wp-content/uploads/2023/07/logo-branca-novo.png.webp"
                                 alt=""
+                                className={navbar ? 'filtering' : 'null'}
                                 style={{
                                     width: '150px',
                                     height: 'auto',
-                                    objectFit: 'cover'
+                                    objectFit: 'cover',
+                                    filter: navbar ? 'invert(100%)' : 'none'
                                 }}
                             />
                         </Box>
@@ -67,19 +95,44 @@ export default function Header() {
                             }
                         }}
                     >
-                        <Typography variant="body1" className="animatingMenu">
+                        <Typography
+                            variant="body1"
+                            className={`animatingMenu ${
+                                navbar ? 'color-font' : ''
+                            }`}
+                        >
                             Início
                         </Typography>
-                        <Typography variant="body1" className="animatingMenu">
+                        <Typography
+                            variant="body1"
+                            className={`animatingMenu ${
+                                navbar ? 'color-font' : ''
+                            }`}
+                        >
                             Quem Somos
                         </Typography>
-                        <Typography variant="body1" className="animatingMenu">
+                        <Typography
+                            variant="body1"
+                            className={`animatingMenu ${
+                                navbar ? 'color-font' : ''
+                            }`}
+                        >
                             Funcionalidades
                         </Typography>
-                        <Typography variant="body1" className="animatingMenu">
+                        <Typography
+                            variant="body1"
+                            className={`animatingMenu ${
+                                navbar ? 'color-font' : ''
+                            }`}
+                        >
                             Planos e Preços
                         </Typography>
-                        <Typography variant="body1" className="animatingMenu">
+                        <Typography
+                            variant="body1"
+                            className={`animatingMenu ${
+                                navbar ? 'color-font' : ''
+                            }`}
+                        >
                             Contato
                         </Typography>
                     </Stack>
@@ -94,10 +147,11 @@ export default function Header() {
                     >
                         <Button
                             sx={{
-                                borderRadius: '12px',
+                                borderRadius: '15px',
                                 color: 'white',
                                 backgroundColor: '#18BD95',
                                 width: '150px',
+                                height: '40px',
                                 fontStyle: 'initial',
                                 whiteSpace: 'nowrap',
                                 ':hover': {
@@ -108,14 +162,16 @@ export default function Header() {
                             Teste Grátis
                         </Button>
                         <Button
-                            className="buttonHoverBlue"
+                            color="secondary"
                             sx={{
-                                borderRadius: '20px',
+                                borderRadius: '15px',
                                 border: '2px solid white',
                                 color: 'white',
                                 width: '150px',
+                                height: '40px',
                                 fontStyle: 'initial',
                                 whiteSpace: 'nowrap',
+                                backgroundColor: '#111f3d',
                                 ':hover': {
                                     backgroundColor: '#111f3d'
                                 }

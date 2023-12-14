@@ -1,9 +1,18 @@
 'use client';
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
+
 import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
 import { Roboto } from 'next/font/google';
 import { NextAppDirEmotionCacheProvider } from './EmotionCache';
+
+interface ExtendedBackground {
+    secondary: string;
+}
+
+declare module '@mui/material/styles' {
+    interface TypeBackground extends ExtendedBackground {}
+}
 
 const roboto = Roboto({
     weight: ['400', '500', '700'],
@@ -19,7 +28,8 @@ const themeOptions: ThemeOptions = {
     },
     palette: {
         background: {
-            default: '#fff'
+            default: '#fff',
+            secondary: '#111f3d'
         },
         primary: {
             main: '#1976d2'
