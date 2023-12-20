@@ -1,14 +1,51 @@
-import { Button, Typography } from '@mui/material';
+import {
+    Button,
+    Select,
+    TextField,
+    Typography,
+    MenuItem,
+    InputLabel,
+    TextareaAutosize
+} from '@mui/material';
 import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+
 interface ModalProps {
     clicked: boolean;
     setClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface Form {
+    nome: string;
+    whatsapp: number;
+    email: string;
+    empresa: string;
+    mensagem: string;
+    funcionarios: string;
+}
+
 export default function Modal({ clicked, setClicked }: ModalProps) {
+    const [value, setValue] = useState<Form>({
+        nome: '',
+        whatsapp: 0,
+        email: '',
+        empresa: '',
+        mensagem: '',
+        funcionarios: ''
+    });
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setValue((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+        console.log(name, value);
+    };
     const handleClicked = () => {
         setClicked(false);
     };
+
     return (
         <Box
             sx={{
@@ -29,12 +66,16 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
                 <Box
                     sx={{
                         background: 'white',
-                        height: { xs: '70vh', md: '60vh' },
-                        padding: { xs: '20px', md: '48px' },
+                        height: { xs: 'auto', md: '65vh' },
+                        paddingX: { xs: '20px', md: '50px' },
+                        paddingY: { xs: '30px', md: '50px' },
 
                         width: { xs: '80vw', md: '500px' },
                         borderRadius: '20px',
-                        border: '2px solid #A9A9A9'
+                        border: '2px solid #A9A9A9',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center'
                     }}
                 >
                     <Box
@@ -58,7 +99,7 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
                             color: '#2D2874',
                             lineHeight: 0,
                             marginBottom: '4px',
-                            marginTop: '20px',
+
                             fontSize: { xs: '24px', lg: '32px' }
                         }}
                     >
@@ -86,6 +127,112 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
                         o tempo de espera por atendimento e garantindo vendas
                         constantes.
                     </Typography>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            marginTop: '24px',
+                            gap: '8px'
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                gap: '1rem'
+                            }}
+                        >
+                            <TextField
+                                variant="outlined"
+                                size="small"
+                                placeholder="Nome:"
+                                className="inputRounded"
+                                onChange={handleChange}
+                                name="nome"
+                                sx={{ borderRadius: '40px' }}
+                            />
+
+                            <TextField
+                                variant="outlined"
+                                size="small"
+                                type="number"
+                                onChange={handleChange}
+                                name="number"
+                                className="inputRounded"
+                                placeholder="Whatsapp:"
+                            />
+                        </Box>
+                        <Box>
+                            <TextField
+                                variant="outlined"
+                                size="small"
+                                fullWidth
+                                onChange={handleChange}
+                                name="email"
+                                className="inputRounded"
+                                placeholder="Email:"
+                            />
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                gap: '1rem'
+                            }}
+                        >
+                            <TextField
+                                variant="outlined"
+                                size="small"
+                                onChange={handleChange}
+                                name="empresa"
+                                placeholder="Empresa:"
+                                className="inputRounded"
+                                sx={{ borderRadius: '40px' }}
+                            />
+
+                            <Select
+                                sx={{ width: '50%' }}
+                                size="small"
+                                className="inputRounded"
+                                value={value.funcionarios}
+                                displayEmpty
+                                name="funcionarios"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value="">N° de Funcionários</MenuItem>
+                                <MenuItem value={'0-1'}>0-1</MenuItem>
+                                <MenuItem value={'1-5'}>1-5</MenuItem>
+                            </Select>
+                        </Box>
+
+                        <Box>
+                            <TextField
+                                rows={2}
+                                placeholder="Mensagem:"
+                                fullWidth
+                                onChange={handleChange}
+                                name="mensagem"
+                                multiline
+                            />
+                        </Box>
+                        <Button
+                            sx={{
+                                width: '150px',
+                                alignItems: 'center',
+                                whiteSpace: 'nowrap',
+                                background: '#18BD95',
+                                color: 'white',
+                                borderRadius: '20px',
+                                border: '2px solid black',
+                                ':hover': {
+                                    backgroundColor: '#111f3d'
+                                }
+                            }}
+                        >
+                            Solicitar Contato
+                        </Button>
+                    </Box>
                 </Box>
             ) : null}
         </Box>

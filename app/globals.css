@@ -12,6 +12,10 @@
     animation: animation-women 2s ease-in-out infinite;
 }
 
+.inputRounded .MuiOutlinedInput-root .MuiOutlinedSelect-root {
+    border-radius: 10px;
+}
+
 .animatingMenu {
     transition: all;
 }
