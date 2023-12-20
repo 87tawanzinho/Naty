@@ -2,8 +2,10 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/AccountCircle';
 import { useEffect, useState } from 'react';
+import Modal from './Modal';
 
 export default function Header() {
+    const [clicked, setClicked] = useState(false);
     const [navbar, setNavBar] = useState(false);
 
     const changeBackground = () => {
@@ -24,6 +26,9 @@ export default function Header() {
         };
     }, []);
 
+    const handleClicked = () => {
+        setClicked(true);
+    };
     return (
         <Box
             sx={{
@@ -44,6 +49,11 @@ export default function Header() {
                 paddingBottom: '80px'
             }}
         >
+            {clicked ? (
+                <Box>
+                    <Modal clicked={clicked} setClicked={setClicked} />
+                </Box>
+            ) : null}
             <Box>
                 <Box
                     display="flex"
@@ -159,6 +169,7 @@ export default function Header() {
                                     backgroundColor: '#111f3d'
                                 }
                             }}
+                            onClick={handleClicked}
                         >
                             Teste Grátis
                         </Button>
