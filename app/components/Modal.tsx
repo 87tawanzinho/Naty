@@ -10,6 +10,7 @@ import {
     SelectChangeEvent
 } from '@mui/material';
 import Box from '@mui/material/Box';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 interface ModalProps {
@@ -27,6 +28,7 @@ interface Form {
 }
 
 export default function Modal({ clicked, setClicked }: ModalProps) {
+    const router = useRouter();
     const [value, setValue] = useState<Form>({
         nome: '',
         whatsapp: 0,
@@ -48,7 +50,9 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
         setClicked(false);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         console.log('Form Data:', value);
     };
     return (
@@ -132,7 +136,7 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
                         o tempo de espera por atendimento e garantindo vendas
                         constantes.
                     </Typography>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <Box
                             sx={{
                                 display: 'flex',
@@ -216,6 +220,10 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
                                     </MenuItem>
                                     <MenuItem value={'0-1'}>0-1</MenuItem>
                                     <MenuItem value={'1-5'}>1-5</MenuItem>
+                                    <MenuItem value={'5-10'}>5-10</MenuItem>
+                                    <MenuItem value={'10-20'}>10-20</MenuItem>
+                                    <MenuItem value={'20-50'}>20-50</MenuItem>
+                                    <MenuItem value={'+50'}>+ 50</MenuItem>
                                 </Select>
                             </Box>
 
@@ -245,7 +253,6 @@ export default function Modal({ clicked, setClicked }: ModalProps) {
                                         backgroundColor: '#111f3d'
                                     }
                                 }}
-                                onSubmit={handleSubmit}
                             >
                                 Solicitar Contato
                             </Button>
